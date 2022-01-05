@@ -6,12 +6,14 @@
 0️⃣ Aikocute
 
 1️⃣ Group zalo : VPS Aiko Sever
+
+☑️ Có tích hợp chặn quản cáo :D mọi thể loại 
 ----------------------------------------------------------
 */
 
 /**
 0️⃣ QuantumultX
-resource_parser_url = https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/resource-parser.js
+resource_parser_url = https://raw.githubusercontent.com/herotbty/QuanX/master/Aiko-resource-parser.js
 ⚠️⚠️
 
 ------------------------------
