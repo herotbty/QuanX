@@ -53,13 +53,13 @@ SubFlow() //流量通知
 // 参数获取
 var Pin0 = mark0 && para1.indexOf("in=") != -1 ? (para1.split("in=")[1].split("&")[0].split("+")).map(decodeURIComponent) : null;
 var Pout0 = mark0 && para1.indexOf("out=") != -1 ? (para1.split("out=")[1].split("&")[0].split("+")).map(decodeURIComponent) : null;
-var Psfilter = mark0 && para1.indexOf("sfilter=") != -1 ? Base64.decode(para1.split("sfilter=")[1].split("&")[0]) : null; // script filter
-var Preg = mark0 && para1.indexOf("regex=") != -1 ? decodeURIComponent(para1.split("regex=")[1].split("&")[0]).replace(/\，/g,",") : null; //server正则过滤参数
-var Pregout = mark0 && para1.indexOf("regout=") != -1 ? decodeURIComponent(para1.split("regout=")[1].split("&")[0]).replace(/\，/g,",") : null; //server正则删除参数
-var Pregdel = mark0 && para1.indexOf("delreg=") != -1 ? decodeURIComponent(para1.split("delreg=")[1].split("&")[0]).replace(/\，/g,",") : null; // 正则删除参数
+var Psfilter = mark0 && para1.indexOf("sfilter=") != -1 ? Base64.decode(para1.split("sfilter=")[1].split("&")[0]) : null; // 
+var Preg = mark0 && para1.indexOf("regex=") != -1 ? decodeURIComponent(para1.split("regex=")[1].split("&")[0]).replace(/\，/g,",") : null; //
+var Pregout = mark0 && para1.indexOf("regout=") != -1 ? decodeURIComponent(para1.split("regout=")[1].split("&")[0]).replace(/\，/g,",") : null; //
+var Pregdel = mark0 && para1.indexOf("delreg=") != -1 ? decodeURIComponent(para1.split("delreg=")[1].split("&")[0]).replace(/\，/g,",") : null; // 
 var Phin0 = mark0 && para1.indexOf("inhn=") != -1 ? (para1.split("inhn=")[1].split("&")[0].split("+")).map(decodeURIComponent) : null; //hostname 
 var Phout0 = mark0 && para1.indexOf("outhn=") != -1 ? (para1.split("outhn=")[1].split("&")[0].split("+")).map(decodeURIComponent) : null; //hostname
-var Preplace = mark0 && para1.indexOf("replace=") != -1 ? para1.split("replace=")[1].split("&")[0] : null; //filter/rewrite 正则替换
+var Preplace = mark0 && para1.indexOf("replace=") != -1 ? para1.split("replace=")[1].split("&")[0] : null; //filter/rewrite 
 var Pemoji = mark0 && para1.indexOf("emoji=") != -1 ? para1.split("emoji=")[1].split("&")[0] : null;
 var Pdbg = mark0 && para1.indexOf("dbg=") != -1 ? para1.split("dbg=")[1].split("&")[0] : null;
 var Pudp0 = mark0 && para1.indexOf("udp=") != -1 ? para1.split("udp=")[1].split("&")[0] : 0;
@@ -84,17 +84,17 @@ var pfihn = Phin0 ? "inhn=" + Phin0.join(", ") + ",  " : ""
 var pfohn = Phout0 ? "outhn=" + Phout0.join(", ") : ""
 var Pcnt =  para1.indexOf("cnt=") != -1 ? para1.split("cnt=")[1].split("&")[0] : 0;
 var Pcap = para1.indexOf("cap=") != -1 ? para1.split("cap=")[1].split("&")[0] : "";
-var Pptn = para1.indexOf("ptn=") != -1 ? para1.split("ptn=")[1].split("&")[0] : ""; //花式英文字符
-var Pnptn = para1.indexOf("npt=") != -1 ? para1.split("npt=")[1].split("&")[0] : ""; //花式数字
+var Pptn = para1.indexOf("ptn=") != -1 ? para1.split("ptn=")[1].split("&")[0] : ""; //
+var Pnptn = para1.indexOf("npt=") != -1 ? para1.split("npt=")[1].split("&")[0] : ""; //
 var Pcdn = para1.indexOf("cdn=") != -1 ? para1.split("cdn=")[1].split("&")[0] : "";
 let [flow, exptime, errornode, total] = "";
-var Pdel = mark0 && para1.indexOf("del=") != -1 ? para1.split("del=")[1].split("&")[0] : 0; //删除重复节点
+var Pdel = mark0 && para1.indexOf("del=") != -1 ? para1.split("del=")[1].split("&")[0] : 0; //
 var typeU = para1.indexOf("type=") != -1 ? para1.split("type=")[1].split("&")[0] : "";
-var Pfcr = para1.indexOf("fcr=") != -1 ? para1.split("fcr=")[1].split("&")[0] : ""; // force-cellular 参数
-var Pvia = para1.indexOf("via=") != -1 ? para1.split("via=")[1].split("&")[0] : ""; // via-interface 参数
-var Paead = para1.indexOf("aead=") != -1 ? para1.split("aead=")[1].split("&")[0] : ""; // vmess aead 参数
+var Pfcr = para1.indexOf("fcr=") != -1 ? para1.split("fcr=")[1].split("&")[0] : ""; // 
+var Pvia = para1.indexOf("via=") != -1 ? para1.split("via=")[1].split("&")[0] : ""; // 
+var Paead = para1.indexOf("aead=") != -1 ? para1.split("aead=")[1].split("&")[0] : ""; // 
 
-var typeQ = $resource.type? $resource.type:"unsupported"   //返回 field 类型参数
+var typeQ = $resource.type? $resource.type:"unsupported"   //
 
 
 
@@ -124,11 +124,11 @@ patn[8] = ["𝟶","𝟷","𝟸","𝟹","𝟺","𝟻","𝟼","𝟽","𝟾","𝟿"
 
 
 var type0=""
-//flag=1,2,3分别为 server、rewrite、rule 类型
+
 var flag = 1
 
 function Parser() {
-  type0 = Type_Check(content0); //  类型判断
+  type0 = Type_Check(content0); //
   //$notify(type0)
   if (type0 != "web" && type0 != "wrong-field"){
     try {
@@ -139,11 +139,11 @@ function Parser() {
       total = ResourceParse();
       
     } catch (err) {
-      $notify("❌ 解析出现错误", "⚠️ 请点击发送链接反馈", err, bug_link);
+      $notify("❌ parsing error", "⚠️ Please click the send link for feedback", err, bug_link);
     }
   } else if (type0 == "wrong-field"){
     //$notify(type0+"ss")
-    $notify("❌ 解析类型与目标类型"+" 「"+typeQ+" 」不符", "⚠️ 请自行检查链接内容，或点击通知反馈", $resource.link, bug_link)
+    $notify("❌ Loại phân tích cú pháp so với Loại mục tiêu"+" 「"+typeQ+" 」Không khớp", "⚠️ Vui lòng tự kiểm tra nội dung của liên kết hoặc nhấp vào phản hồi thông báo", $resource.link, bug_link)
     total=""
   } else {
     total=""
@@ -167,11 +167,11 @@ function ParseUnknown(cnt){
   try {
     cnt = JSON.parse(cnt)
     if(cnt) {
-      $notify("⚠️ 链接返回内容并非有效订阅"+ "⟦" + subtag + "⟧","⁉️ 请自行检查原始链接，返回内容 👇️👇️",JSON.stringify(cnt), bug_link)
+      $notify("⚠️ Liên kết trả về nội dung không phải là một đăng ký hợp lệ"+ "⟦" + subtag + "⟧","⁉️ Vui lòng tự kiểm tra liên kết gốc, trả lại nội dung 👇️👇️",JSON.stringify(cnt), bug_link)
     }
     
   } catch(err) {
-    $notify("😭 未能识别该订阅格式：  " + "⟦" + subtag + "⟧",  "⚠️ 将直接导入Quantumult X \n 如认为是 BUG, 请点通知跳转反馈", "链接返回内容:\n"+cnt, bug_link);
+    $notify("😭 Định dạng đăng ký không được nhận dạng：  " + "⟦" + subtag + "⟧",  "⚠️ sẽ nhập khẩu trực tiếp Quantumult X \n Nếu bạn cho rằng đó là BUG, ​​vui lòng nhấp vào thông báo để chuyển đến phần phản hồi", "liên kết trở lại nội dung:\n"+cnt, bug_link);
   }
 }
 
@@ -213,7 +213,7 @@ function ResourceParse() {
     if (Ppolicyset) {total = policy_sets(total, Ppolicyset)}
     total = total.join("\n")
   } else if (content0.trim() == "") {
-    $notify("‼️ 引用" + "⟦" + subtag + "⟧" + " 返回內容为空", "⁉️ 点通知跳转以确认链接是否失效", para.split("#")[0], nan_link);
+    $notify("‼️ 引用trích dẫn" + "⟦" + subtag + "⟧" + " Nội dung trả lại trống", "⁉️ Nhấp vào bước nhảy thông báo để xác nhận xem liên kết có không hợp lệ hay không", para.split("#")[0], nan_link);
     flag = 0;
   } else if (type0 == "unknown") {
     ParseUnknown(content0)
@@ -258,11 +258,11 @@ function ResourceParse() {
       }
       total = para1.indexOf("node_index_prefix")!=-1 ?index_handle(total):total // 节点序号操作
       total = TagCheck_QX(total).join("\n") //节点名检查
-      if (Pcnt == 1) {$notify("解析后最终返回内容" , "节点数量: " +total.split("\n").length, total)}
+      if (Pcnt == 1) {$notify("Nội dung trả về cuối cùng sau khi phân tích cú pháp" , "số lượng nút: " +total.split("\n").length, total)}
       total = Base64.encode(total) //强制节点类型 base64 加密后再导入 Quantumult X
       $done({ content: total });
     } else {
-      $notify("❓❓ 友情提示 ➟ "+ "⟦" + subtag + "⟧", "⚠️⚠️ 解析后无有效内容", "🚥🚥 请自行检查相关参数, 或者点击通知跳转反馈", bug_link)
+      $notify("❓❓ lời nhắc nhở thân thiện ➟ "+ "⟦" + subtag + "⟧", "⚠️⚠️ Không có nội dung hợp lệ sau khi phân tích cú pháp", "🚥🚥 Vui lòng tự kiểm tra các thông số liên quan hoặc nhấp vào thông báo để chuyển đến phần phản hồi", bug_link)
       total = errornode
       $done({ content: errornode })
     }
@@ -273,7 +273,7 @@ function ResourceParse() {
     total = content0
     $done({ content: content0 })
   } 
-  if (Pcnt == 1 && flag !=1) {$notify("解析后最终返回内容" , "总数量： " +total.split("\n").length, total)}
+  if (Pcnt == 1 && flag !=1) {$notify("Nội dung trả về cuối cùng sau khi phân tích cú pháp" , "Tổng số lượng： " +total.split("\n").length, total)}
   return total
   
 }
@@ -282,21 +282,21 @@ function ResourceParse() {
 function SubFlow() {
   if (Pinfo == 1 && subinfo) {
     var sinfo = subinfo.replace(/ /g, "").toLowerCase();
-    var total = "总流量: " + (parseFloat(sinfo.split("total=")[1].split(",")[0]) / (1024 ** 3)).toFixed(2) + "GB";
-    var usd = "已用流量: " + ((parseFloat(sinfo.indexOf("upload")!=-1?sinfo.split("upload=")[1].split(",")[0]:"0") + parseFloat(sinfo.split("download=")[1].split(",")[0])) / (1024 ** 3)).toFixed(2) + "GB"
-    var left = "剩余流量: " + ((parseFloat(sinfo.split("total=")[1].split(",")[0]) / (1024 ** 3)) - ((parseFloat(sinfo.indexOf("upload")!=-1?sinfo.split("upload=")[1].split(",")[0]:"0") + parseFloat(sinfo.split("download=")[1].split(",")[0])) / (1024 ** 3))).toFixed(2) + "GB"
+    var total = "Tổng lưu lượng: " + (parseFloat(sinfo.split("total=")[1].split(",")[0]) / (1024 ** 3)).toFixed(2) + "GB";
+    var usd = "lưu lượng truy cập đã sử dụng: " + ((parseFloat(sinfo.indexOf("upload")!=-1?sinfo.split("upload=")[1].split(",")[0]:"0") + parseFloat(sinfo.split("download=")[1].split(",")[0])) / (1024 ** 3)).toFixed(2) + "GB"
+    var left = "dòng chảy dư: " + ((parseFloat(sinfo.split("total=")[1].split(",")[0]) / (1024 ** 3)) - ((parseFloat(sinfo.indexOf("upload")!=-1?sinfo.split("upload=")[1].split(",")[0]:"0") + parseFloat(sinfo.split("download=")[1].split(",")[0])) / (1024 ** 3))).toFixed(2) + "GB"
     if (sinfo.indexOf("expire=") != -1) {
       var epr = new Date(parseFloat(sinfo.split("expire=")[1].split(",")[0]) * 1000);
       var year = epr.getFullYear();  // 获取完整的年份(4位,1970)
       var mth = epr.getMonth() + 1 < 10 ? '0' + (epr.getMonth() + 1) : (epr.getMonth() + 1);  // 获取月份(0-11,0代表1月,用的时候记得加上1)
       var day = epr.getDate() < 10 ? "0" + (epr.getDate()) : epr.getDate();
-      epr = "过期时间: " + year + "-" + mth + "-" + day
+      epr = "hạn sử dụng: " + year + "-" + mth + "-" + day
     } else {
       epr = ""; //"过期时间: ✈️ 未提供該信息" //没过期时间的显示订阅链接
     }
     var message = total + "\n" + usd + ", " + left;
     ntf_flow = 1;
-    $notify("流量信息: ⟦" + subtag + "⟧", epr, message, subinfo_link)
+    $notify("Thông tin giao thông: ⟦" + subtag + "⟧", epr, message, subinfo_link)
   }
 //  } else if (Pinfo ==1){
 //    $notify("流量信息: ⟦" + subtag + "⟧", "", "⚠️ 该订阅链接未返回任何流量信息", subinfo_link)
@@ -309,15 +309,15 @@ function flowcheck(cnt) {
         var item = cnt[i];
         var nl = item.slice(item.indexOf("tag"))
         var nm = nl.slice(nl.indexOf("=") + 1)
-        if (item.indexOf("剩余流量") != -1) {
+        if (item.indexOf("dòng chảy dư") != -1) {
             flow = nm
-        } else if (item.indexOf("期时间") != -1) {
+        } else if (item.indexOf("khoảng thời gian") != -1) {
             exptime = nm
         }
     }
-  flow = flow? flow:"⚠️ 该订阅未返回任何流量信息"
-  exptime = exptime? exptime:"⚠️ 该订阅未返回套餐时间信息"
-    if (flow != "") { $notify("流量信息: ⟦" + subtag + "⟧", flow, exptime, subinfo_link1) }
+  flow = flow? flow:"⚠️ Đăng ký không trả lại bất kỳ thông tin lưu lượng nào"
+  exptime = exptime? exptime:"⚠️ Đăng ký không trả lại thông tin thời gian gói"
+    if (flow != "") { $notify("Thông tin giao thông: ⟦" + subtag + "⟧", flow, exptime, subinfo_link1) }
 }
 
 // regex 后的检查
